@@ -1,0 +1,45 @@
+# Question Link : https://practice.geeksforgeeks.org/problems/reversal-algorithm/0
+
+
+#include <iostream>
+using namespace std;
+int fun(int A[], int n, int d)
+   {
+       int temp[d];
+      for(int i=0; i<d; i++)
+        {
+            temp[i]=A[i];
+        }
+      for(int j=0; j<n-d; j++)
+        {
+            A[j]=A[j+d];
+            cout << A[j]<< " ";
+        }
+      for(int k=0; k<d; k++)
+        {
+            cout << temp[k] <<" ";
+        }
+      cout <<endl;
+      
+   }
+
+int main() 
+{
+	int t;
+	cin >>t;
+	int T[t];
+	for(int i=0; i<t; i++)
+	  {
+	      cin >> T[i];
+	      int a=T[i];
+	      int A[a], d;
+	      for(int j=0; j<a; j++)
+	        {
+	            cin >> A[j];
+	        }
+	        cin >>d;
+	        fun(A,a,d);
+	        
+	  }
+	return 0;
+}
