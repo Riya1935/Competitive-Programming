@@ -1,0 +1,44 @@
+// Question link:  https://codeforces.com/contest/1328/problem/C
+
+// My solution
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long 
+#define ld long double
+#define pb push_back
+#define fi0(i,n) for(int i=0; i<n; i++)
+#define fi1(i,n) for(int i=1; i<n; i++)
+#define fll0(i,n) for(long long i=0; i<n; i++)
+#define fll1(i,n) for(long long i=1; i<n; i++)
+#define vll vector<long long>
+#define vi vector<int>
+#define vvi vector<vector<int>>
+#define vvll vector<vector<long long>>
+int main()
+  {
+          ll t;
+          cin>>t;
+          while(t--)
+            {
+               ll n;
+               cin>>n;
+               string s;
+               cin>>s;
+               vector<char> a(n), b(n);
+               ll x=0;
+               fll0(i,n)
+                 {
+                    if(s.at(i)=='0')  {a.at(i)='0'; b.at(i)='0';}
+                    if(s.at(i)=='2' && x==0)  {a.at(i)='1'; b.at(i)='1';}
+                    if(s.at(i)=='2' && x!=0)  {a.at(i)='0'; b.at(i)='2';}
+                    if(s.at(i)=='1' && x!=0)  {a.at(i)='0'; b.at(i)='1';}
+                    if(s.at(i)=='1' && x==0)  {a.at(i)='1'; b.at(i)='0'; x++;}
+                 }
+               fll0(i,n)    cout<<a[i];
+               cout<<endl;
+               fll0(i,n)    cout<<b[i];
+               cout<<endl;
+            }
+          return 0;
+  }
