@@ -1,0 +1,77 @@
+// Question Link: https://codeforces.com/contest/1330/problem/B
+
+// My solution
+
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+bool safe(vector<int> v)
+    {
+          int n=v.size(),a=0;
+          sort(v.begin(),v.end());
+          for(int i=1; i<=n; i++)
+             {
+                    if(!(binary_search(v.begin(),v.end(),i))) a++;  
+             }
+          if(a==0) return true;
+          else return false;
+    }
+void print(vector<int> ans)
+    {
+              for(int i=0; i<ans.size(); i=i+2)
+                 {
+                           cout<<ans.at(i)<<" "<<ans.at(i+1)<<endl;
+                 }
+    }
+void f(vector<int> v, int n)
+   {
+          int count=0;
+          vector<int> ans;
+          int a=*max_element(v.begin(),v.end());
+          vector<int> v1,v2,v3,v4;
+          for(int i=0; i<n; i++)
+             {
+                       if(i<a) v1.push_back(v.at(i));
+                       else v2.push_back(v.at(i));
+             }
+          if(safe(v1) && safe(v2))
+              {
+                        count++;
+                        ans.push_back(a);
+                        ans.push_back(n-a);
+              }
+          int b=n-a;
+          if(a!=b){
+          for(int i=0; i<n; i++)
+             {
+                       if(i<b) v3.push_back(v.at(i));
+                       else v4.push_back(v.at(i));
+             }
+          if(safe(v3) && safe(v4))
+              {
+                        count++;
+                        ans.push_back(b);
+                        ans.push_back(a);
+              }
+          }
+          cout<<count<<endl;
+          print(ans);
+   }
+int32_t main()
+   {
+             int t;
+             cin>>t;
+             while(t--)
+              {
+                        int n;
+                        cin>>n;
+                        vector<int> v;
+                        for(int i=0; i<n; i++)
+                           {
+                                     int a;
+                                     cin>>a;
+                                     v.push_back(a);
+                           }
+                        f(v,n);
+              }
+   }
