@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define fll0(i,n)  for(ll i=0; i<n; i++)
+int main() {
+    ll t;
+    cin>>t;
+    while(t--)
+      {
+          ll n;
+          cin>>n;
+          ll arr[n]={0};
+          vector<ll> v(n-1);
+          fll0(i,n-1)
+            {
+                cin>>v[i];
+                arr[v[i]-1]++;
+            }
+         fll0(i,n)
+           {
+               if(arr[i]==0)  {cout<<i+1<<endl; break;}
+           }
+      }
+	return 0;
+}
