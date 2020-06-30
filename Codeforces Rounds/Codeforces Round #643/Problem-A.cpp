@@ -11,32 +11,33 @@ using namespace std;
 #define vi vector<int>
 #define vvi vector<vector<int>>
 #define vvll vector<vector<long long>>
+ll add1(ll a1)
+  {
+      ll min=9, max=0;
+      while(a1>0)
+        {
+              ll y=a1%10;
+              a1=a1/10;
+              if(y>max)  max=y;
+              if(y<min)  min=y;
+        }
+     return max*min;
+  }
 int main()
   {
-            ll t;
-            cin>>t;
-            while(t--)
-              {
-                   ll n;
-                   cin>>n;
-                   vll v(n);
-                   fll0(i,n)   cin>>v[i];
-                   sort(v.begin(), v.end());
-                   ll a=*max_element(v.begin(), v.end());
-                   ll arr[a+1]={0};
-                   fll0(i,n)  arr[v[i]]++;
-                   ll count=0;
-                   fll1(i,a+1)
-                     {
-                         if(i!=a) {
-                         count=count+(arr[i]/i);
-                         ll rem=arr[i]%i;
-                         arr[i+1]=arr[i+1]+rem;}
-                         else
-                           {
-                                count=count+(arr[i]/i);
-                           }
-                     }
-                    cout<<count<<endl;
-              }
+         ll t;
+         cin>>t;
+         while(t--)
+           {
+                     ll a1,k;
+                     cin>>a1>>k;
+                     ll s=k-1;
+                     while(s--)
+                       {
+                           ll x=add1(a1);
+                           if(x==0)  break;
+                           a1=a1+x;
+                       }
+                    cout<<a1<<endl;
+           }
   }
