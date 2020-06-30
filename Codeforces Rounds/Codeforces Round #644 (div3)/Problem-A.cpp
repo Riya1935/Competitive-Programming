@@ -11,22 +11,25 @@ using namespace std;
 #define vi vector<int>
 #define vvi vector<vector<int>>
 #define vvll vector<vector<long long>>
+ll f(ll a, ll b)
+  {
+     ll x=min(a,b);
+     ll y=max(a,b);
+     for(ll i=1;;i++)
+       {
+             if(i>=2*x && i>=y)  return i*i;
+             if(i>=x+y)  return i*i;
+             if(i>=2*y && i>=x) return i*i;
+       }
+  }
 int main()
   {
             ll t;
             cin>>t;
             while(t--)
-               {
-                       ll n;
-                       cin>>n;
-                       vll v(n);
-                       fll0(i,n)   cin>>v[i];
-                       sort(v.begin(), v.end());
-                       ll min=v[n-1]-v[n-2];
-                       fll1(i,n)
-                         {
-                                   if(v[i]-v[i-1]<min)  min=v[i]-v[i-1];
-                         }
-                      cout<<min<<endl;
-               }
+              {
+                        ll a,b;
+                        cin>>a>>b;
+                        cout<<f(a,b)<<endl;
+              }
   }
