@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long 
+#define ld long double
+#define pb push_back
+#define fi0(i,n) for(int i=0; i<n; i++)
+#define fi1(i,n) for(int i=1; i<n; i++)
+#define fll0(i,n) for(long long i=0; i<n; i++)
+#define fll1(i,n) for(long long i=1; i<n; i++)
+#define vll vector<long long>
+#define vi vector<int>
+#define vvi vector<vector<int>>
+#define vvll vector<vector<long long>>
+int main()
+  {
+      ll t;
+      cin>>t;
+      while(t--)
+        {
+             ll n,k;
+             cin>>n>>k;
+             vll v(n);
+             fll0(i,n)  cin>>v[i];
+             ll arr[n]={0};
+             fll1(i,n)
+                {
+                     if(v[i]>v[i-1] && v[i]>v[i+1])  arr[i]=1;
+                }
+             ll pref[n];
+             ll sum=0;
+             fll0(i,n)
+                {
+                     sum=sum+arr[i];
+                     pref[i]=sum;
+                }
+            ll max=0, low=0;
+            for(ll l=0; l<=n-k;l++)
+               {
+                   ll x=pref[l+k-2]-pref[l];
+                   if(x>max)  {max=x; low=l;}
+               }
+           cout<<max+1<<" "<<low+1<<endl;
+        }
+  }
+          
